@@ -1,0 +1,67 @@
+The Caveats of Deploying Go Apps on Heroku
+
+Andrew G
+@kivlor
+
+* An Introduction
+
+- I'm Andrew
+- I work for a large SaaS company (the shipping and fulfilment one)
+- I like to think I'm a polyglot (but PHP is my daily language)
+- I'm not a Gopher (well, not yet)
+
+* What the Heck is Heroku?
+
+- Heroku is a PaaS
+- It supports a bunch of languages (Ruby, Node, Go etc.)
+- It's free (well, for experiments)
+
+* My First Web App
+
+    package main
+
+    import (
+        "fmt"
+        "net/http"
+        "os"
+    )
+
+    func root(w http.ResponseWriter, r *http.Request) {
+        fmt.Fprint(w, "G'day")
+    }
+
+    func main() {
+        http.HandleFunc("/", root)
+        http.ListenAndServe(":8080", nil)
+    }
+
+* Caveat Number One, Go App Detection
+
+- Heroku (usually) relies on package manages to detect app types
+- Ruby has Bundler, Node has NPM has, Go has... Godep?
+- _explain_using_godep_save_to_generate_godeps.json_
+    $ go get github.com/tools/godep
+    $ godep save ./...
+
+* Caveat Number Two, Which Port?
+
+- Each Heroku web process is assigned a port on launch
+- The port is stored in the environment vairable $PORT
+- _explain_using_os_package_to_get_port_
+
+* Caveat Number Three, the Procfile
+
+- Heroku uses a Procfile
+- _explain_one_process_per_line_
+- _give_web_example_
+
+* Caveat Number Four, the `cmd` Directory
+
+- Heroku uses the convention of a `cmd` directory for Go apps
+- _explain_linking_profile_comands_to_directories_
+- _give_hello_example_
+
+* Questions?
+
+- Talk (and app): [[https://git.io/val41]]
+- My website: [[http://kivlor.com]]
