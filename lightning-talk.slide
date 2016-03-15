@@ -1,7 +1,5 @@
 The Caveats of Deploying Go Apps on Heroku
 
-Andrew
-
 * An Introduction
 
 - I'm Andrew 😎
@@ -36,35 +34,35 @@ The classic hello world:
         http.ListenAndServe(":8080", nil)
     }
 
-* Caveat Number One, Go App Detection
+* Go App Detection
 
 - Heroku (usually) relies on package managers to detect app types
 - Ruby has Bundler, Node has NPM, Go has... Godep?
 - To setup Godep on a fresh project we run:
     $ godep save ./...
 
-* Caveat Number Two, The Procfile
+* The Procfile
 
 - Heroku uses a Procfile to define commands and the process to run them
 - Your Procfile can define multiple process:command pairs (one per line)
 - To create a web process that runs our app we use:
     web: hello
 
-* Caveat Number Three, The `cmd` Directory
+* The `cmd` Directory
 
 - Heroku uses the convention of a `cmd` directory for Go apps
 - Each command should reside in a sub directory matching your Procfile
-- Based on our Procfile, our example app cmd directoy should look like:
+- Based on our Procfile, our example apps cmd directory will be:
     .
     ├── cmd
     │   └── hello
     │       └── main.go
 
-* Caveat Number Four, Which Port?
+* Which Port?
 
-- Each Heroku web process is assigned a port on launch
+- Each Heroku web process is assigned a random port on launch
 - The port is stored in the environment variable $PORT
-- In Go, we can access environment variables using the `os` package
+- In Go, we can access environment variables using Getenv from the `os` package
     
     package main
     
@@ -82,6 +80,16 @@ The classic hello world:
         http.HandleFunc("/", root)
         http.ListenAndServe(":"+os.Getenv("PORT"), nil)
     }
+
+* Ready, Set, Deploy!
+
+- Heroku has it's own toolbelt for provisioning/deploying/logging
+- The actual deploy step is done via `git push`
+- Now that our app is ready, we can provision and deploy:
+
+    $ heroku create // creates our new app
+    $ git push heroku master // deploys our app
+    $ herkou open // launches our browser with the new app
 
 * Questions?
 
