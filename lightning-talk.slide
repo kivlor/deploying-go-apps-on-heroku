@@ -1,11 +1,10 @@
 The Caveats of Deploying Go Apps on Heroku
 
-Andrew G
-@kivlor
+Andrew
 
 * An Introduction
 
-- I'm Andrew
+- I'm Andrew 😎
 - I work for a large SaaS company (the shipping and fulfilment one)
 - I like to think I'm a polyglot (but PHP is my daily language)
 - I'm not a Gopher (well, not yet)
@@ -55,12 +54,8 @@ The classic hello world:
 
 - Heroku uses the convention of a `cmd` directory for Go apps
 - Each command should reside in a sub directory matching your Procfile
-- What our example app directory structure looks like:
+- Based on our Procfile, our example app cmd directoy should look like:
     .
-    ├── Godeps
-    │   ├── Godeps.json
-    │   └── Readme
-    ├── Procfile
     ├── cmd
     │   └── hello
     │       └── main.go
@@ -90,5 +85,5 @@ The classic hello world:
 
 * Questions?
 
-- This talk (and app): [[https://git.io/val41]]
-- More about me: [[http://kivlor.com]]
+🖼 This talk (and app): [[https://git.io/val41]]
+🙋 More about me: [[http://kivlor.com]]
