@@ -1,6 +1,6 @@
 ### The Caveats of Deploying Go Apps on Heroku
 
-A lightening talk on deploying Go apps on Heroku
+A lightening talk on deploying Go apps on [![Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ##### Running the Slides
 
