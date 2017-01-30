@@ -9,7 +9,7 @@ A lightening talk on deploying Go apps on Heroku
 Install the present tool:
 
 ```
-$ go get https://golang.org/x/tools/present
+$ go get golang.org/x/tools/cmd/present
 ```
 
 From the directory call `present`:
